@@ -7,6 +7,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
+map <Space> <leader>
 
 set nocompatible
 filetype off
@@ -236,6 +237,7 @@ command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport
 " NOTE: Please see `:h coc-status` for integrations with external plugins that provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+
 " Mappings using CoCList:
 " Show all diagnostics.
 nnoremap <silent> <space>a :<C-u>CocList diagnostics<cr>
@@ -256,6 +258,13 @@ nnoremap <silent> <space>p :<C-u>CocListResume<CR>
 " Remap buffer navigation
 nnoremap <leader>bn :bn<cr>
 nnoremap <leader>bp :bp<cr>
+call coc#config('languageserver', {
+        \ 'ccls': {
+        \   "command": "ccls",
+        \   "trace.server": "verbose",
+        \   "filetypes": ["c", "cpp", "objc", "objcpp"]
+        \ }
+        \})
 "nnoremap <leader>d :call LanguageClient#textDocument_definition()<CR>
 "nnoremap <leader>dt :call LanguageClient#textDocument_definition({
 "    \ 'gotoCmd': 'tabedit',
