@@ -7,6 +7,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 map <Space> <leader>
 
 set nocompatible
@@ -87,7 +88,7 @@ let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
 "let g:airline#extensions#tagbar#enabled = 1
 set laststatus=2
 au VimEnter * exec 'AirlineTheme hybrid'
-set guifont=CodeNewRoman\ Nerd\ Font\ Mono\ Bold:h11
+set guifont=CodeNewRoman\ Nerd\ Font\ Mono:h11
 
 
 set encoding=utf-8
@@ -97,6 +98,7 @@ syntax on
 colorscheme gruvbox
 set background=dark
 set number
+set cursorline
 
 " NERDTree settings
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
@@ -171,6 +173,8 @@ nnoremap <leader><U> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
 
 " GoTo code navigation.
 nmap <silent> <leader>d <Plug>(coc-definition)
+nmap <silent> <leader>ds :call CocAction('jumpDefinition', 'split')<CR>
+nmap <silent> <leader>dt :call CocAction('jumpDefinition', 'tabe')<CR>
 nmap <silent> <leader>t <Plug>(coc-type-definition)
 nmap <silent> <leader>i <Plug>(coc-implementation)
 nmap <silent> <leader>fr <Plug>(coc-references)
